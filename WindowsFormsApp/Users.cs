@@ -24,13 +24,11 @@ namespace WindowsFormsApp
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            //string tableName = "TAIKHOAN";
-            //dataAccount.DataSource = OracleHelper.GetRoles(tableName);
-            
 
-            //dataAccount.DataSource = OracleHelper.Manager_User_Role("HIEU", "ALTER", "1234");
-            //OracleHelper.Grant("QUI", "DELETE");
-            //dataAccount.DataSource = OracleHelper.GET_OBJECT_PRIVILEGES("QUI");
+            string username = textBox_username.Text;
+
+            OracleHelper.AddUser(username);
+            OracleHelper.ExecCreate();
 
         }
 
@@ -66,7 +64,7 @@ namespace WindowsFormsApp
 
             string p_action = "ALTER";
 
-            OracleHelper.Manager_User_Role(username, p_action, newpass);
+            OracleHelper.Manager_User_Role(username, newpass, p_action);
         }
 
         private void btn_delete_user_Click(object sender, EventArgs e)
@@ -74,6 +72,11 @@ namespace WindowsFormsApp
             string username = textBox_username.Text;
 
             OracleHelper.DELETE_USER(username);
+        }
+
+        private void Users_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

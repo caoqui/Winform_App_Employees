@@ -67,7 +67,7 @@ namespace MyApp
         }
         
         //change password of user.
-        public static DataTable Manager_User_Role(string p_user_role_name, string p_action, string p_password)
+        public static DataTable Manager_User_Role(string p_user_role_name, string p_password, string p_action)
         {
             DataTable dataTable = new DataTable();
 
@@ -89,22 +89,24 @@ namespace MyApp
                     parameter1.Value = p_user_role_name;
                     command.Parameters.Add(parameter1);
 
-                    // Thêm tham số p_password
+                    // Thêm tham số p_action
                     OracleParameter parameter2 = new OracleParameter();
                     parameter2.OracleDbType = OracleDbType.Varchar2;
                     parameter2.Direction = ParameterDirection.Input;
-                    parameter2.ParameterName = "p_password";
-                    parameter2.Value = p_password;
-                    parameter2.Value = p_password;
+                    parameter2.ParameterName = "p_action";
+                    parameter2.Value = p_action;
                     command.Parameters.Add(parameter2);
 
-                    // Thêm tham số p_action
+                    // Thêm tham số p_password
                     OracleParameter parameter3 = new OracleParameter();
                     parameter3.OracleDbType = OracleDbType.Varchar2;
                     parameter3.Direction = ParameterDirection.Input;
-                    parameter3.ParameterName = "p_action";
-                    parameter3.Value = p_action;
+                    parameter3.ParameterName = "p_password";
+                    parameter3.Value = p_password;
+                    parameter3.Value = p_password;
                     command.Parameters.Add(parameter3);
+
+
 
                     OracleDataAdapter adapter = new OracleDataAdapter(command);
                     adapter.Fill(dataTable);
@@ -265,6 +267,84 @@ namespace MyApp
                     MessageBox.Show("Error: " + ex.Message);
                 }
             }
+        }
+
+
+        public static void AddUser(string p_user_role_name)
+        {
+            DataTable dataTable = new DataTable();
+
+
+            using (OracleConnection connection = GetOracleConnection())
+            {
+                try
+                {
+                    connection.Open();
+
+
+                    string queryString1 = "INSERT INTO TAIKHOAN VALUES('" + p_user_role_name + "','123')";
+
+
+                    //string queryString = "REVOKE ALL PRIVILEGES FROM "+ p_user_role_name + "; DROP USER " + p_user_role_name + ";";
+
+                    //string queryString = "REVOKE ALL PRIVILEGES FROM " + p_user_role_name + "; DROP USER " + p_user_role_name;
+
+
+
+
+                    //new OracleCommand(queryString1, connection);
+
+                    OracleCommand command = new OracleCommand(queryString1, connection);
+
+                    OracleDataAdapter adapter = new OracleDataAdapter(command);
+                    adapter.Fill(dataTable);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
+            };
+
+        }
+
+        public static DataTable ExecCreate()
+        {
+
+            DataTable dataTable = new DataTable();
+
+            using (OracleConnection connection = GetOracleConnection())
+            {
+                try
+                {
+                    connection.Open();
+
+                    OracleCommand command = new OracleCommand();
+
+                    command.Connection = connection;
+                    command.CommandText = "P_CREATEUSER";
+
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    //
+
+                    // Khởi tạo tham số đầu ra
+                    OracleParameter outputParam = new OracleParameter();
+                    outputParam.OracleDbType = OracleDbType.RefCursor;
+                    outputParam.Direction = ParameterDirection.Output;
+                    command.Parameters.Add(outputParam);
+
+                    OracleDataAdapter adapter = new OracleDataAdapter(command);
+
+                    adapter.Fill(dataTable);
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
+            }
+
+            return dataTable;
         }
 
         // Thêm các phương thức truy vấn dữ liệu khác tại đây

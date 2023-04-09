@@ -162,6 +162,7 @@
             this.Controls.Add(this.dataAccount);
             this.Name = "Users";
             this.Text = "Users";
+            this.Load += new System.EventHandler(this.Users_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataAccount)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
