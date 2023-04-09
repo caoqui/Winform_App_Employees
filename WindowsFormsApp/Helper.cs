@@ -26,6 +26,7 @@ namespace MyApp
             return connection;
         }
 
+        // view all users on system
         public static DataTable GetAccounts()
         {
             DataTable dataTable = new DataTable();
@@ -64,52 +65,10 @@ namespace MyApp
 
             return dataTable;
         }
-
-        /*public static DataTable GetRoles(string objName)
+        
+        //change password of user.
+        public static DataTable Manager_User_Role(string p_user_role_name, string p_action, string p_password)
         {
-            using (OracleConnection connection = GetOracleConnection())
-            {
-                try
-                {
-                    connection.Open();
-
-                    OracleCommand command = new OracleCommand();
-                    command.Connection = connection;
-                    command.CommandText = "GET_OBJECT_PRIVILEGES";
-                    command.CommandType = CommandType.StoredProcedure;
-
-                    // Khởi tạo tham số đầu vào
-                    OracleParameter inputParam = new OracleParameter();
-                    inputParam.OracleDbType = OracleDbType.Varchar2;
-                    inputParam.Direction = ParameterDirection.Input;
-                    inputParam.ParameterName = "p_obj_name";
-                    inputParam.Value = objName;
-                    command.Parameters.Add(inputParam);
-
-                    // Khởi tạo tham số đầu ra
-                    OracleParameter outputParam = new OracleParameter();
-                    outputParam.OracleDbType = OracleDbType.RefCursor;
-                    outputParam.Direction = ParameterDirection.Output;
-                    command.Parameters.Add(outputParam);
-
-                    OracleDataAdapter adapter = new OracleDataAdapter(command);
-
-                    DataTable dataTable = new DataTable();
-                    adapter.Fill(dataTable);
-
-                    return dataTable;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error: " + ex.Message);
-                    return null;
-                }
-            }
-        }
-        */
-
-            public static DataTable GetRoles() {
-
             DataTable dataTable = new DataTable();
 
             using (OracleConnection connection = GetOracleConnection())
@@ -120,40 +79,193 @@ namespace MyApp
                     OracleCommand command = new OracleCommand();
                     command.Connection = connection;
                     command.CommandType = CommandType.StoredProcedure;
-                    command.CommandText = "GET_OBJECT_PRIVILEGES";
+                    command.CommandText = "manage_user_role";
 
-                    OracleParameter parameter = new OracleParameter();
-                    parameter.OracleDbType = OracleDbType.Varchar2;
-                    parameter.Direction = ParameterDirection.Input;
-                    parameter.ParameterName = "p_obj_name";
-                    parameter.Value = "TAIKHOAN";
+                    // Thêm tham số p_user_role_name
+                    OracleParameter parameter1 = new OracleParameter();
+                    parameter1.OracleDbType = OracleDbType.Varchar2;
+                    parameter1.Direction = ParameterDirection.Input;
+                    parameter1.ParameterName = "p_user_role_name";
+                    parameter1.Value = p_user_role_name;
+                    command.Parameters.Add(parameter1);
 
-                    command.Parameters.Add(parameter);
+                    // Thêm tham số p_password
+                    OracleParameter parameter2 = new OracleParameter();
+                    parameter2.OracleDbType = OracleDbType.Varchar2;
+                    parameter2.Direction = ParameterDirection.Input;
+                    parameter2.ParameterName = "p_password";
+                    parameter2.Value = p_password;
+                    parameter2.Value = p_password;
+                    command.Parameters.Add(parameter2);
+
+                    // Thêm tham số p_action
+                    OracleParameter parameter3 = new OracleParameter();
+                    parameter3.OracleDbType = OracleDbType.Varchar2;
+                    parameter3.Direction = ParameterDirection.Input;
+                    parameter3.ParameterName = "p_action";
+                    parameter3.Value = p_action;
+                    command.Parameters.Add(parameter3);
 
                     OracleDataAdapter adapter = new OracleDataAdapter(command);
-                    //DataTable dataTable = new DataTable();
                     adapter.Fill(dataTable);
- 
-
-
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Error: " + ex.Message);
                     return null;
                 }
-
             }
 
             return dataTable;
-
         }
 
 
+        // grant privigele for user on table TAIKHOAN
+        public static void Grant(string p_user_role_name, string p_action, string p_table, string p_row, string p_allowgrant)
+        {
+            DataTable dataTable = new DataTable();
+
+            using (OracleConnection connection = GetOracleConnection())
+            {
+                try
+                {
+                    connection.Open();
+
+                    string queryString;
+
+                    if (p_action.ToUpper() == "INSERT" || p_action.ToUpper() == "DELETE")
+                    {
+                        queryString = "GRANT " + p_action + " ON " + p_table + " TO " + p_user_role_name + " " + p_allowgrant;
+                    }
+
+                    else if (p_action.ToUpper() == "SELECT" || p_action.ToUpper() == "UPDATE")
+                    {
+                        queryString = "GRANT " + p_action + "( " + p_row + " ) ON " + p_table + " TO " + p_user_role_name + " " + p_allowgrant;
+                    }
+                    else
+                    {
+                        return;
+                    }
+
+                    OracleCommand command = new OracleCommand(queryString, connection);
+
+                    OracleDataAdapter adapter = new OracleDataAdapter(command);
+                    adapter.Fill(dataTable);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
+            }
+        }
+
+        public static void Revoke(string p_user_role_name, string p_action, string p_table, string p_row)
+        {
+            DataTable dataTable = new DataTable();
+
+            using (OracleConnection connection = GetOracleConnection())
+            {
+                try
+                {
+                    connection.Open();
+
+                    string queryString;
+
+                    if (p_action.ToUpper() == "INSERT" || p_action.ToUpper() == "DELETE")
+                    {
+                        queryString = "REVOKE " + p_action + " ON " + p_table + " FROM " + p_user_role_name;
+                    }
+
+                    else if (p_action.ToUpper() == "SELECT" || p_action.ToUpper() == "UPDATE")
+                    {
+                        queryString = "REVOKE " + p_action + " (" + p_row + " ) ON " + p_table + " FROM " + p_user_role_name;
+                    }
+                    else
+                    {
+                        return;
+                    }
+
+                    OracleCommand command = new OracleCommand(queryString, connection);
+
+                    OracleDataAdapter adapter = new OracleDataAdapter(command);
+                    adapter.Fill(dataTable);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
+            }
+        }
+
+        //get all privileges all users on TAIKHOAN
+        public static DataTable GET_OBJECT_PRIVILEGES(string p_table)
+        {
+            DataTable dataTable = new DataTable();
+
+            using (OracleConnection connection = GetOracleConnection())
+            {
+                try
+                {
+                    connection.Open();
+
+                    //string queryString = "BEGIN GET_OBJECT_PRIVILEGES('" + p_table + "'); END;";
+                    string queryString = "SELECT GRANTEE, TABLE_NAME, PRIVILEGE, GRANTABLE   FROM DBA_TAB_PRIVS WHERE owner = 'SYS' AND table_name = 'TAIKHOAN'";
+
+                    OracleCommand command = new OracleCommand(queryString, connection);
+
+                    OracleParameter parameter = new OracleParameter();
+                    parameter.OracleDbType = OracleDbType.Varchar2;
+                    parameter.Direction = ParameterDirection.Input;
+                    parameter.ParameterName = "p_obj_name";
+                    parameter.Value = p_table;
+                    command.Parameters.Add(parameter);
+
+                    OracleDataAdapter adapter = new OracleDataAdapter(command);
+                    adapter.Fill(dataTable);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
+            }
+
+            return dataTable;
+        }
+
+
+        public static void DELETE_USER(string p_user_role_name)
+        {
+            DataTable dataTable = new DataTable();
+
+            using (OracleConnection connection = GetOracleConnection())
+            {
+                try
+                {
+                    connection.Open();
+
+                    string queryString1 = "REVOKE ALL PRIVILEGES FROM " + p_user_role_name;
+                    string queryString2 = "DROP USER " + p_user_role_name;
+
+
+                    //string queryString = "REVOKE ALL PRIVILEGES FROM "+ p_user_role_name + "; DROP USER " + p_user_role_name + ";";
+
+                    //string queryString = "REVOKE ALL PRIVILEGES FROM " + p_user_role_name + "; DROP USER " + p_user_role_name;
 
 
 
 
+                    new OracleCommand(queryString1, connection);
+                    OracleCommand command = new OracleCommand(queryString2, connection);
+
+                    OracleDataAdapter adapter = new OracleDataAdapter(command);
+                    adapter.Fill(dataTable);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
+            }
+        }
 
         // Thêm các phương thức truy vấn dữ liệu khác tại đây
     }

@@ -29,16 +29,19 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox_username_grant = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.textBox_bang_grant = new System.Windows.Forms.TextBox();
+            this.checkBox_grant = new System.Windows.Forms.CheckBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.btn_home_grant_user = new System.Windows.Forms.Button();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.btn_revoke_grant = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -50,14 +53,13 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Username:";
             // 
-            // textBox1
+            // textBox_username_grant
             // 
-            this.textBox1.Location = new System.Drawing.Point(136, 47);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(179, 22);
-            this.textBox1.TabIndex = 1;
-            this.textBox1.Text = "username";
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.textBox_username_grant.Location = new System.Drawing.Point(136, 47);
+            this.textBox_username_grant.Name = "textBox_username_grant";
+            this.textBox_username_grant.Size = new System.Drawing.Size(179, 22);
+            this.textBox_username_grant.TabIndex = 1;
+            this.textBox_username_grant.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label2
             // 
@@ -95,44 +97,70 @@
             this.label5.TabIndex = 5;
             this.label5.Text = "Cho phép ủy quyền:";
             // 
-            // textBox2
+            // textBox_bang_grant
             // 
-            this.textBox2.Location = new System.Drawing.Point(136, 100);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(176, 22);
-            this.textBox2.TabIndex = 6;
+            this.textBox_bang_grant.Location = new System.Drawing.Point(136, 145);
+            this.textBox_bang_grant.Name = "textBox_bang_grant";
+            this.textBox_bang_grant.Size = new System.Drawing.Size(179, 22);
+            this.textBox_bang_grant.TabIndex = 7;
+            this.textBox_bang_grant.Text = "TAIKHOAN";
             // 
-            // textBox3
+            // checkBox_grant
             // 
-            this.textBox3.Location = new System.Drawing.Point(136, 145);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(179, 22);
-            this.textBox3.TabIndex = 7;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(136, 190);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(179, 22);
-            this.textBox4.TabIndex = 8;
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(138, 239);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(18, 17);
-            this.checkBox1.TabIndex = 9;
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox_grant.AutoSize = true;
+            this.checkBox_grant.Location = new System.Drawing.Point(138, 239);
+            this.checkBox_grant.Name = "checkBox_grant";
+            this.checkBox_grant.Size = new System.Drawing.Size(18, 17);
+            this.checkBox_grant.TabIndex = 9;
+            this.checkBox_grant.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(198, 292);
+            this.button1.Location = new System.Drawing.Point(83, 302);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(85, 31);
             this.button1.TabIndex = 10;
             this.button1.Text = "Grant";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // btn_home_grant_user
+            // 
+            this.btn_home_grant_user.Location = new System.Drawing.Point(556, 23);
+            this.btn_home_grant_user.Name = "btn_home_grant_user";
+            this.btn_home_grant_user.Size = new System.Drawing.Size(123, 45);
+            this.btn_home_grant_user.TabIndex = 11;
+            this.btn_home_grant_user.Text = "Home";
+            this.btn_home_grant_user.UseVisualStyleBackColor = true;
+            this.btn_home_grant_user.Click += new System.EventHandler(this.btn_home_grant_user_Click);
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(134, 101);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(180, 24);
+            this.comboBox1.TabIndex = 12;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(134, 191);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(179, 24);
+            this.comboBox2.TabIndex = 13;
+            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
+            // 
+            // btn_revoke_grant
+            // 
+            this.btn_revoke_grant.Location = new System.Drawing.Point(309, 302);
+            this.btn_revoke_grant.Name = "btn_revoke_grant";
+            this.btn_revoke_grant.Size = new System.Drawing.Size(100, 30);
+            this.btn_revoke_grant.TabIndex = 14;
+            this.btn_revoke_grant.Text = "Revoke";
+            this.btn_revoke_grant.UseVisualStyleBackColor = true;
+            this.btn_revoke_grant.Click += new System.EventHandler(this.btn_revoke_grant_Click);
             // 
             // Grant_user
             // 
@@ -140,16 +168,18 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(807, 450);
+            this.Controls.Add(this.btn_revoke_grant);
+            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.btn_home_grant_user);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.checkBox_grant);
+            this.Controls.Add(this.textBox_bang_grant);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBox_username_grant);
             this.Controls.Add(this.label1);
             this.Name = "Grant_user";
             this.Text = "Grant_user";
@@ -162,15 +192,18 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox_username_grant;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.TextBox textBox_bang_grant;
+        private System.Windows.Forms.CheckBox checkBox_grant;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btn_home_grant_user;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.Button btn_revoke_grant;
     }
 }

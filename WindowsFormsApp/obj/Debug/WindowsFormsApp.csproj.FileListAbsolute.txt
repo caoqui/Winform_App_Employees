@@ -30,7 +30,7 @@ D:\ATvBM_CSDTtHTTT\Project_Winform_app\WindowsFormsApp\bin\Debug\System.Threadin
 D:\ATvBM_CSDTtHTTT\Project_Winform_app\WindowsFormsApp\bin\Debug\System.ValueTuple.xml
 D:\ATvBM_CSDTtHTTT\Project_Winform_app\WindowsFormsApp\obj\Debug\WindowsFormsApp.Add_role.resources
 D:\ATvBM_CSDTtHTTT\Project_Winform_app\WindowsFormsApp\obj\Debug\WindowsFormsApp.Add_user.resources
-D:\ATvBM_CSDTtHTTT\Project_Winform_app\WindowsFormsApp\obj\Debug\WindowsFormsApp.Grant.resources
 D:\ATvBM_CSDTtHTTT\Project_Winform_app\WindowsFormsApp\obj\Debug\WindowsFormsApp.Grant_role.resources
 D:\ATvBM_CSDTtHTTT\Project_Winform_app\WindowsFormsApp\obj\Debug\WindowsFormsApp.Users.resources
 D:\ATvBM_CSDTtHTTT\Project_Winform_app\WindowsFormsApp\obj\Debug\WindowsFormsApp.csproj.CopyComplete
+D:\ATvBM_CSDTtHTTT\Project_Winform_app\WindowsFormsApp\obj\Debug\WindowsFormsApp.PrivilegesTK.resources
