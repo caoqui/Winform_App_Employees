@@ -91,6 +91,18 @@
     <Compile Include="Add_user.Designer.cs">
       <DependentUpon>Add_user.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dean.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dean.Designer.cs">
+      <DependentUpon>Dean.cs</DependentUpon>
+    </Compile>
+    <Compile Include="General.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="General.Designer.cs">
+      <DependentUpon>General.cs</DependentUpon>
+    </Compile>
     <Compile Include="Grant_role.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,6 +116,30 @@
       <DependentUpon>Grant_user.cs</DependentUpon>
     </Compile>
     <Compile Include="Helper.cs" />
+    <Compile Include="Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Nhanvien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Nhanvien.Designer.cs">
+      <DependentUpon>Nhanvien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Phancong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Phancong.Designer.cs">
+      <DependentUpon>Phancong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Phongban.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Phongban.Designer.cs">
+      <DependentUpon>Phongban.cs</DependentUpon>
+    </Compile>
     <Compile Include="PrivilegesTK.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -124,11 +160,29 @@
     <EmbeddedResource Include="Add_user.resx">
       <DependentUpon>Add_user.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Dean.resx">
+      <DependentUpon>Dean.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="General.resx">
+      <DependentUpon>General.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Grant_role.resx">
       <DependentUpon>Grant_role.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Grant_user.resx">
       <DependentUpon>Grant_user.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Nhanvien.resx">
+      <DependentUpon>Nhanvien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Phancong.resx">
+      <DependentUpon>Phancong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Phongban.resx">
+      <DependentUpon>Phongban.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PrivilegesTK.resx">
       <DependentUpon>PrivilegesTK.cs</DependentUpon>

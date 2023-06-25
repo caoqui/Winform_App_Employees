@@ -269,7 +269,7 @@ namespace MyApp
             }
         }
 
-
+        /*
         public static void AddUser(string p_user_role_name)
         {
             DataTable dataTable = new DataTable();
@@ -346,6 +346,41 @@ namespace MyApp
 
             return dataTable;
         }
+        */
+
+        public static void AddUser(string p_user_role_name)
+        {
+            DataTable dataTable = new DataTable();
+
+
+            using (OracleConnection connection = GetOracleConnection())
+            {
+                try
+                {
+                    connection.Open();
+
+
+                    string queryString1 = "INSERT INTO TAIKHOAN VALUES('" + p_user_role_name + "','123')";
+                    OracleCommand command = new OracleCommand(queryString1, connection);
+                    OracleDataReader reader = command.ExecuteReader();
+
+                    // Tạo đối tượng OracleCommand để thực thi Procedure
+                    string procedureName = "P_CREATEUSER";
+                    OracleCommand procedureCommand = new OracleCommand(procedureName, connection);
+                    procedureCommand.CommandType = CommandType.StoredProcedure;
+
+                    // Thực thi Procedure
+                    procedureCommand.ExecuteNonQuery();
+
+                    connection.Close();
+                }catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
+            };
+
+        }
+
 
         // Thêm các phương thức truy vấn dữ liệu khác tại đây
     }

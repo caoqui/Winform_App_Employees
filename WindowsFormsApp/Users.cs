@@ -28,7 +28,6 @@ namespace WindowsFormsApp
             string username = textBox_username.Text;
 
             OracleHelper.AddUser(username);
-            OracleHelper.ExecCreate();
 
         }
 

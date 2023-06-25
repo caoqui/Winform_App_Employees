@@ -45,7 +45,7 @@
             // dataAccount
             // 
             this.dataAccount.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataAccount.Location = new System.Drawing.Point(41, 23);
+            this.dataAccount.Location = new System.Drawing.Point(16, 32);
             this.dataAccount.Name = "dataAccount";
             this.dataAccount.RowHeadersWidth = 51;
             this.dataAccount.RowTemplate.Height = 24;
