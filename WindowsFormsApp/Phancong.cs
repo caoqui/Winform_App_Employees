@@ -16,5 +16,12 @@ namespace WindowsFormsApp
         {
             InitializeComponent();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            General home = new General();
+            home.Show();
+            this.Hide();
+        }
     }
 }

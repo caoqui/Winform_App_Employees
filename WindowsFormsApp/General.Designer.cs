@@ -42,6 +42,7 @@
             this.button_thongtinnv.TabIndex = 0;
             this.button_thongtinnv.Text = "Thông tin nhân viên";
             this.button_thongtinnv.UseVisualStyleBackColor = true;
+            this.button_thongtinnv.Click += new System.EventHandler(this.button_thongtinnv_Click);
             // 
             // button_thongtinpb
             // 
@@ -51,6 +52,7 @@
             this.button_thongtinpb.TabIndex = 1;
             this.button_thongtinpb.Text = "Thông tin phòng ban";
             this.button_thongtinpb.UseVisualStyleBackColor = true;
+            this.button_thongtinpb.Click += new System.EventHandler(this.button_thongtinpb_Click);
             // 
             // button_thongtinda
             // 
@@ -60,6 +62,7 @@
             this.button_thongtinda.TabIndex = 2;
             this.button_thongtinda.Text = "Thông tin đề án";
             this.button_thongtinda.UseVisualStyleBackColor = true;
+            this.button_thongtinda.Click += new System.EventHandler(this.button_thongtinda_Click);
             // 
             // button_thongtinpc
             // 
@@ -69,6 +72,7 @@
             this.button_thongtinpc.TabIndex = 3;
             this.button_thongtinpc.Text = "Thông tin phân công";
             this.button_thongtinpc.UseVisualStyleBackColor = true;
+            this.button_thongtinpc.Click += new System.EventHandler(this.button_thongtinpc_Click);
             // 
             // General
             // 

@@ -29,20 +29,21 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.DN_username = new System.Windows.Forms.TextBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.DN_password = new System.Windows.Forms.TextBox();
             this.button_dangnhap = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // textBox1
+            // DN_username
             // 
-            this.textBox1.Location = new System.Drawing.Point(111, 46);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(233, 22);
-            this.textBox1.TabIndex = 0;
+            this.DN_username.Location = new System.Drawing.Point(111, 46);
+            this.DN_username.Name = "DN_username";
+            this.DN_username.Size = new System.Drawing.Size(233, 22);
+            this.DN_username.TabIndex = 0;
+            this.DN_username.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // contextMenuStrip1
             // 
@@ -50,12 +51,13 @@
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
-            // textBox2
+            // DN_password
             // 
-            this.textBox2.Location = new System.Drawing.Point(118, 110);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(226, 22);
-            this.textBox2.TabIndex = 2;
+            this.DN_password.Location = new System.Drawing.Point(118, 110);
+            this.DN_password.Name = "DN_password";
+            this.DN_password.Size = new System.Drawing.Size(226, 22);
+            this.DN_password.TabIndex = 2;
+            this.DN_password.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // button_dangnhap
             // 
@@ -65,6 +67,7 @@
             this.button_dangnhap.TabIndex = 3;
             this.button_dangnhap.Text = "Đăng nhập";
             this.button_dangnhap.UseVisualStyleBackColor = true;
+            this.button_dangnhap.Click += new System.EventHandler(this.button_dangnhap_Click);
             // 
             // label1
             // 
@@ -74,7 +77,7 @@
             this.label1.Size = new System.Drawing.Size(70, 16);
             this.label1.TabIndex = 4;
             this.label1.Text = "Username";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+           /* this.label1.Click += new System.EventHandler(this.label1_Click);*/
             // 
             // label2
             // 
@@ -93,8 +96,8 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button_dangnhap);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.DN_password);
+            this.Controls.Add(this.DN_username);
             this.Name = "Login";
             this.Text = "Login";
             this.ResumeLayout(false);
@@ -104,9 +107,9 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox DN_username;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox DN_password;
         private System.Windows.Forms.Button button_dangnhap;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;

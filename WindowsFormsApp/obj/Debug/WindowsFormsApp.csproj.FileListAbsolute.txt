@@ -34,3 +34,9 @@ D:\ATvBM_CSDTtHTTT\Project_Winform_app\WindowsFormsApp\obj\Debug\WindowsFormsApp
 D:\ATvBM_CSDTtHTTT\Project_Winform_app\WindowsFormsApp\obj\Debug\WindowsFormsApp.Users.resources
 D:\ATvBM_CSDTtHTTT\Project_Winform_app\WindowsFormsApp\obj\Debug\WindowsFormsApp.csproj.CopyComplete
 D:\ATvBM_CSDTtHTTT\Project_Winform_app\WindowsFormsApp\obj\Debug\WindowsFormsApp.PrivilegesTK.resources
+D:\ATvBM_CSDTtHTTT\Project_Winform_app\WindowsFormsApp\obj\Debug\WindowsFormsApp.Dean.resources
+D:\ATvBM_CSDTtHTTT\Project_Winform_app\WindowsFormsApp\obj\Debug\WindowsFormsApp.General.resources
+D:\ATvBM_CSDTtHTTT\Project_Winform_app\WindowsFormsApp\obj\Debug\WindowsFormsApp.Login.resources
+D:\ATvBM_CSDTtHTTT\Project_Winform_app\WindowsFormsApp\obj\Debug\WindowsFormsApp.Nhanvien.resources
+D:\ATvBM_CSDTtHTTT\Project_Winform_app\WindowsFormsApp\obj\Debug\WindowsFormsApp.Phancong.resources
+D:\ATvBM_CSDTtHTTT\Project_Winform_app\WindowsFormsApp\obj\Debug\WindowsFormsApp.Phongban.resources
