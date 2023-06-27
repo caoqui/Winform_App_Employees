@@ -43,7 +43,7 @@
             this.DN_username.Name = "DN_username";
             this.DN_username.Size = new System.Drawing.Size(233, 22);
             this.DN_username.TabIndex = 0;
-            this.DN_username.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            /*this.DN_username.TextChanged += new System.EventHandler(this.textBox1_TextChanged);*/
             // 
             // contextMenuStrip1
             // 
@@ -57,7 +57,7 @@
             this.DN_password.Name = "DN_password";
             this.DN_password.Size = new System.Drawing.Size(226, 22);
             this.DN_password.TabIndex = 2;
-            this.DN_password.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            /*this.DN_password.TextChanged += new System.EventHandler(this.textBox2_TextChanged);*/
             // 
             // button_dangnhap
             // 

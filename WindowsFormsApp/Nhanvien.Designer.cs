@@ -46,6 +46,7 @@
             this.data_nhanvien.RowTemplate.Height = 24;
             this.data_nhanvien.Size = new System.Drawing.Size(448, 355);
             this.data_nhanvien.TabIndex = 0;
+            this.data_nhanvien.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.data_nhanvien_CellContentClick);
             // 
             // button1
             // 
@@ -109,6 +110,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.data_nhanvien)).EndInit();
             this.ResumeLayout(false);
 
+            this.Load += new System.EventHandler(this.Nhanvien_Load);
         }
 
         #endregion

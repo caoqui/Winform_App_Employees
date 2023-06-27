@@ -1,19 +1,18 @@
 ﻿using Oracle.ManagedDataAccess.Client;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WindowsFormsApp
 {
+    public static class DatabaseManager
+    {
+        public static OracleConnection Connection { get; set; }
+    }
+
     public partial class Login : Form
     {
         public string Username { get; private set; } // Lưu trữ thông tin đăng nhập
+
         public Login()
         {
             InitializeComponent();
@@ -41,6 +40,7 @@ namespace WindowsFormsApp
                 MessageBox.Show("Đăng nhập thất bại!");
             }
         }
+
         private bool AuthenticateUser(string username, string password)
         {
             string connectionString = string.Format(@"Data Source=(DESCRIPTION =
@@ -49,39 +49,22 @@ namespace WindowsFormsApp
                     (SERVER = DEDICATED)
                     (SERVICE_NAME = XE)
                 )
-            );User Id={0};Password={1};DBA Privilege=SYSDBA;", username, password);
+            );User Id={0};Password={1};", username, password);
 
-            using (OracleConnection connection = new OracleConnection(connectionString))
+            try
             {
-                try
-                {
-                    connection.Open();
-                    return true; // Kết nối thành công
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Lỗi kết nối tới cơ sở dữ liệu: " + ex.Message);
-                    return false; // Kết nối thất bại
-                }
+                DatabaseManager.Connection = new OracleConnection(connectionString);
+                DatabaseManager.Connection.Open();
+                return true; // Kết nối thành công
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi kết nối tới cơ sở dữ liệu: " + ex.Message);
+                return false; // Kết nối thất bại
             }
         }
 
         private void Login_Load(object sender, EventArgs e)
-        {
-
-        }
-
-/*        private void button_dangnhap_Click(object sender, EventArgs e)
-        {
-
-        }*/
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }
