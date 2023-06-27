@@ -28,22 +28,28 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.data_phancong = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.tb_manv_pc = new System.Windows.Forms.TextBox();
+            this.tb_mada_pc = new System.Windows.Forms.TextBox();
+            this.dt_thoigian_pc = new System.Windows.Forms.DateTimePicker();
+            ((System.ComponentModel.ISupportInitialize)(this.data_phancong)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // data_phancong
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(46, 94);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(500, 307);
-            this.dataGridView1.TabIndex = 0;
+            this.data_phancong.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.data_phancong.Location = new System.Drawing.Point(46, 94);
+            this.data_phancong.Name = "data_phancong";
+            this.data_phancong.RowHeadersWidth = 51;
+            this.data_phancong.Size = new System.Drawing.Size(500, 307);
+            this.data_phancong.TabIndex = 0;
             // 
             // button1
             // 
@@ -82,29 +88,91 @@
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(567, 85);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(86, 16);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Mã nhân viên";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(567, 154);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(63, 16);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Mã đề án";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(567, 213);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(118, 16);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Thời gian thực hiện";
+            // 
+            // tb_manv_pc
+            // 
+            this.tb_manv_pc.Location = new System.Drawing.Point(693, 82);
+            this.tb_manv_pc.Name = "tb_manv_pc";
+            this.tb_manv_pc.Size = new System.Drawing.Size(223, 22);
+            this.tb_manv_pc.TabIndex = 8;
+            // 
+            // tb_mada_pc
+            // 
+            this.tb_mada_pc.Location = new System.Drawing.Point(693, 148);
+            this.tb_mada_pc.Name = "tb_mada_pc";
+            this.tb_mada_pc.Size = new System.Drawing.Size(224, 22);
+            this.tb_mada_pc.TabIndex = 9;
+            // 
+            // dt_thoigian_pc
+            // 
+            this.dt_thoigian_pc.Location = new System.Drawing.Point(694, 208);
+            this.dt_thoigian_pc.Name = "dt_thoigian_pc";
+            this.dt_thoigian_pc.Size = new System.Drawing.Size(223, 22);
+            this.dt_thoigian_pc.TabIndex = 10;
+            // 
             // Phancong
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1025, 450);
+            this.ClientSize = new System.Drawing.Size(1043, 450);
+            this.Controls.Add(this.dt_thoigian_pc);
+            this.Controls.Add(this.tb_mada_pc);
+            this.Controls.Add(this.tb_manv_pc);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.data_phancong);
             this.Name = "Phancong";
             this.Text = "Phancong";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Load += new System.EventHandler(this.Phancong_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.data_phancong)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView data_phancong;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox tb_manv_pc;
+        private System.Windows.Forms.TextBox tb_mada_pc;
+        private System.Windows.Forms.DateTimePicker dt_thoigian_pc;
     }
 }

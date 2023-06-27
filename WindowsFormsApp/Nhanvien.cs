@@ -28,7 +28,9 @@ namespace WindowsFormsApp
             if (DatabaseManager.Connection != null)
             {
                 // Tạo câu truy vấn
+
                 string query = "SELECT * FROM ATBM.NV_NV_VIEW";
+
 
                 // Khởi tạo DataAdapter và DataTable
                 dataAdapter = new OracleDataAdapter(query, DatabaseManager.Connection);
@@ -40,7 +42,6 @@ namespace WindowsFormsApp
                 // Đặt DataTable là nguồn dữ liệu cho DataGridView
                 data_nhanvien.DataSource = dataTable;
 
-                MessageBox.Show("Load dữ liệu!");
             }
         }
 
