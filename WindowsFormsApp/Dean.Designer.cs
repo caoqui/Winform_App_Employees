@@ -61,6 +61,7 @@
             this.button1.TabIndex = 1;
             this.button1.Text = "Thêm";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -153,6 +154,7 @@
             this.dt_ngaybd_da.Name = "dt_ngaybd_da";
             this.dt_ngaybd_da.Size = new System.Drawing.Size(272, 22);
             this.dt_ngaybd_da.TabIndex = 13;
+            this.dt_ngaybd_da.ValueChanged += new System.EventHandler(this.dt_ngaybd_da_ValueChanged);
             // 
             // Dean
             // 

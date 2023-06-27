@@ -27,12 +27,22 @@ namespace WindowsFormsApp
             {
                 // Đăng nhập thành công
                 Username = username; // Lưu thông tin đăng nhập vào biến
+                if(Username == "sys" || Username == "ATBM")
+                {
+                    Users admin = new Users();
+                    admin.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    General general_user = new General();
+                    general_user.Show();
+                    this.Hide();
+                }
 
                 MessageBox.Show("Đăng nhập thành công!");
 
-                General general_user = new General();
-                general_user.Show();
-                this.Hide();
+
             }
             else
             {
@@ -43,13 +53,28 @@ namespace WindowsFormsApp
 
         private bool AuthenticateUser(string username, string password)
         {
-            string connectionString = string.Format(@"Data Source=(DESCRIPTION =
+            string connectionString;
+            if (username != "sys")
+            {
+                connectionString = string.Format(@"Data Source=(DESCRIPTION =
                 (ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1521))
                 (CONNECT_DATA =
                     (SERVER = DEDICATED)
                     (SERVICE_NAME = XE)
                 )
             );User Id={0};Password={1};", username, password);
+            } else
+            {
+                connectionString = string.Format(@"Data Source=(DESCRIPTION =
+                (ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1521))
+                (CONNECT_DATA =
+                    (SERVER = DEDICATED)
+                    (SERVICE_NAME = XE)
+                )
+            );User Id={0};Password={1}; DBA Privilege=SYSDBA;", username, password);
+            }
+            
+
 
             try
             {

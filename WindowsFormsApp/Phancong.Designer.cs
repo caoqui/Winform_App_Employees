@@ -59,6 +59,7 @@
             this.button1.TabIndex = 1;
             this.button1.Text = "Thêm";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -135,6 +136,7 @@
             this.dt_thoigian_pc.Name = "dt_thoigian_pc";
             this.dt_thoigian_pc.Size = new System.Drawing.Size(223, 22);
             this.dt_thoigian_pc.TabIndex = 10;
+            this.dt_thoigian_pc.ValueChanged += new System.EventHandler(this.dt_thoigian_pc_ValueChanged);
             // 
             // Phancong
             // 

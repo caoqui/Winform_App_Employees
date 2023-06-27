@@ -29,17 +29,15 @@
         private void InitializeComponent()
         {
             this.data_nhanvien = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btn_them_nv = new System.Windows.Forms.Button();
+            this.btn_xoa_nv = new System.Windows.Forms.Button();
+            this.btn_capnhat_nv = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.tb_manv_nv = new System.Windows.Forms.TextBox();
             this.tb_tennv_nv = new System.Windows.Forms.TextBox();
-            this.tb_phai_nv = new System.Windows.Forms.TextBox();
             this.tb_diachi_nv = new System.Windows.Forms.TextBox();
             this.tb_phg_nv = new System.Windows.Forms.TextBox();
             this.tb_manql_nv = new System.Windows.Forms.TextBox();
-            this.tb_vaitro_nv = new System.Windows.Forms.TextBox();
             this.tb_luong_nv = new System.Windows.Forms.TextBox();
             this.tb_phucap_nv = new System.Windows.Forms.TextBox();
             this.lb_manv = new System.Windows.Forms.Label();
@@ -55,6 +53,9 @@
             this.lb_sodt = new System.Windows.Forms.Label();
             this.tb_sodt_nv = new System.Windows.Forms.TextBox();
             this.dt_ngaysinh_nv = new System.Windows.Forms.DateTimePicker();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.dd_phai_nv = new System.Windows.Forms.ComboBox();
+            this.cbb_vaitro_nv = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.data_nhanvien)).BeginInit();
             this.SuspendLayout();
             // 
@@ -69,32 +70,33 @@
             this.data_nhanvien.TabIndex = 0;
             this.data_nhanvien.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.data_nhanvien_CellContentClick);
             // 
-            // button1
+            // btn_them_nv
             // 
-            this.button1.Location = new System.Drawing.Point(511, 443);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(155, 44);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Thêm";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btn_them_nv.Location = new System.Drawing.Point(511, 443);
+            this.btn_them_nv.Name = "btn_them_nv";
+            this.btn_them_nv.Size = new System.Drawing.Size(155, 44);
+            this.btn_them_nv.TabIndex = 1;
+            this.btn_them_nv.Text = "Thêm";
+            this.btn_them_nv.UseVisualStyleBackColor = true;
+            this.btn_them_nv.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // btn_xoa_nv
             // 
-            this.button2.Location = new System.Drawing.Point(710, 443);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(157, 44);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Xóa";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btn_xoa_nv.Location = new System.Drawing.Point(710, 443);
+            this.btn_xoa_nv.Name = "btn_xoa_nv";
+            this.btn_xoa_nv.Size = new System.Drawing.Size(157, 44);
+            this.btn_xoa_nv.TabIndex = 2;
+            this.btn_xoa_nv.Text = "Xóa";
+            this.btn_xoa_nv.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // btn_capnhat_nv
             // 
-            this.button4.Location = new System.Drawing.Point(921, 443);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(155, 44);
-            this.button4.TabIndex = 4;
-            this.button4.Text = "Cập nhật";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btn_capnhat_nv.Location = new System.Drawing.Point(921, 443);
+            this.btn_capnhat_nv.Name = "btn_capnhat_nv";
+            this.btn_capnhat_nv.Size = new System.Drawing.Size(155, 44);
+            this.btn_capnhat_nv.TabIndex = 4;
+            this.btn_capnhat_nv.Text = "Cập nhật";
+            this.btn_capnhat_nv.UseVisualStyleBackColor = true;
             // 
             // button5
             // 
@@ -120,13 +122,6 @@
             this.tb_tennv_nv.Size = new System.Drawing.Size(239, 22);
             this.tb_tennv_nv.TabIndex = 7;
             // 
-            // tb_phai_nv
-            // 
-            this.tb_phai_nv.Location = new System.Drawing.Point(593, 137);
-            this.tb_phai_nv.Name = "tb_phai_nv";
-            this.tb_phai_nv.Size = new System.Drawing.Size(239, 22);
-            this.tb_phai_nv.TabIndex = 8;
-            // 
             // tb_diachi_nv
             // 
             this.tb_diachi_nv.Location = new System.Drawing.Point(593, 229);
@@ -147,13 +142,6 @@
             this.tb_manql_nv.Name = "tb_manql_nv";
             this.tb_manql_nv.Size = new System.Drawing.Size(223, 22);
             this.tb_manql_nv.TabIndex = 12;
-            // 
-            // tb_vaitro_nv
-            // 
-            this.tb_vaitro_nv.Location = new System.Drawing.Point(956, 126);
-            this.tb_vaitro_nv.Name = "tb_vaitro_nv";
-            this.tb_vaitro_nv.Size = new System.Drawing.Size(223, 22);
-            this.tb_vaitro_nv.TabIndex = 13;
             // 
             // tb_luong_nv
             // 
@@ -281,12 +269,31 @@
             this.dt_ngaysinh_nv.Name = "dt_ngaysinh_nv";
             this.dt_ngaysinh_nv.Size = new System.Drawing.Size(236, 22);
             this.dt_ngaysinh_nv.TabIndex = 28;
+            this.dt_ngaysinh_nv.ValueChanged += new System.EventHandler(this.dt_ngaysinh_nv_ValueChanged);
+            // 
+            // dd_phai_nv
+            // 
+            this.dd_phai_nv.FormattingEnabled = true;
+            this.dd_phai_nv.Location = new System.Drawing.Point(593, 137);
+            this.dd_phai_nv.Name = "dd_phai_nv";
+            this.dd_phai_nv.Size = new System.Drawing.Size(239, 24);
+            this.dd_phai_nv.TabIndex = 29;
+            // 
+            // cbb_vaitro_nv
+            // 
+            this.cbb_vaitro_nv.FormattingEnabled = true;
+            this.cbb_vaitro_nv.Location = new System.Drawing.Point(956, 129);
+            this.cbb_vaitro_nv.Name = "cbb_vaitro_nv";
+            this.cbb_vaitro_nv.Size = new System.Drawing.Size(223, 24);
+            this.cbb_vaitro_nv.TabIndex = 30;
             // 
             // Nhanvien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1263, 511);
+            this.Controls.Add(this.cbb_vaitro_nv);
+            this.Controls.Add(this.dd_phai_nv);
             this.Controls.Add(this.dt_ngaysinh_nv);
             this.Controls.Add(this.tb_sodt_nv);
             this.Controls.Add(this.lb_sodt);
@@ -302,17 +309,15 @@
             this.Controls.Add(this.lb_manv);
             this.Controls.Add(this.tb_phucap_nv);
             this.Controls.Add(this.tb_luong_nv);
-            this.Controls.Add(this.tb_vaitro_nv);
             this.Controls.Add(this.tb_manql_nv);
             this.Controls.Add(this.tb_phg_nv);
             this.Controls.Add(this.tb_diachi_nv);
-            this.Controls.Add(this.tb_phai_nv);
             this.Controls.Add(this.tb_tennv_nv);
             this.Controls.Add(this.tb_manv_nv);
             this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btn_capnhat_nv);
+            this.Controls.Add(this.btn_xoa_nv);
+            this.Controls.Add(this.btn_them_nv);
             this.Controls.Add(this.data_nhanvien);
             this.Name = "Nhanvien";
             this.Text = "Nhanvien";
@@ -326,17 +331,15 @@
         #endregion
 
         private System.Windows.Forms.DataGridView data_nhanvien;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btn_them_nv;
+        private System.Windows.Forms.Button btn_xoa_nv;
+        private System.Windows.Forms.Button btn_capnhat_nv;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.TextBox tb_manv_nv;
         private System.Windows.Forms.TextBox tb_tennv_nv;
-        private System.Windows.Forms.TextBox tb_phai_nv;
         private System.Windows.Forms.TextBox tb_diachi_nv;
         private System.Windows.Forms.TextBox tb_phg_nv;
         private System.Windows.Forms.TextBox tb_manql_nv;
-        private System.Windows.Forms.TextBox tb_vaitro_nv;
         private System.Windows.Forms.TextBox tb_luong_nv;
         private System.Windows.Forms.TextBox tb_phucap_nv;
         private System.Windows.Forms.Label lb_manv;
@@ -352,5 +355,8 @@
         private System.Windows.Forms.Label lb_sodt;
         private System.Windows.Forms.TextBox tb_sodt_nv;
         private System.Windows.Forms.DateTimePicker dt_ngaysinh_nv;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.ComboBox dd_phai_nv;
+        private System.Windows.Forms.ComboBox cbb_vaitro_nv;
     }
 }

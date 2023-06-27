@@ -19,6 +19,11 @@ namespace WindowsFormsApp
         public Dean()
         {
             InitializeComponent();
+
+            dt_ngaybd_da.CustomFormat = " "; // Đặt format thành một khoảng trắng để hiển thị giá trị null
+            dt_ngaybd_da.Format = DateTimePickerFormat.Custom;
+
+            dt_ngaybd_da.ValueChanged += dt_ngaybd_da_ValueChanged;
         }
 
         private void Dean_Load(object sender, EventArgs e)
@@ -50,6 +55,33 @@ namespace WindowsFormsApp
             General home = new General();
             home.Show();
             this.Hide();
+        }
+
+        private void dt_ngaybd_da_ValueChanged(object sender, EventArgs e)
+        {
+            if (dt_ngaybd_da.Value == dt_ngaybd_da.MinDate)
+            {
+                dt_ngaybd_da.CustomFormat = " "; // Hiển thị giá trị null nếu giá trị DateTimePicker bằng giá trị MinDate
+            }
+            else
+            {
+                dt_ngaybd_da.CustomFormat = "dd/MM/yyyy"; // Đặt format ngày tháng mong muốn
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string mada = tb_mada_da.Text;
+            string tenda = tb_tenda_da.Text;
+            DateTime ngaybd;
+
+            if (dt_ngaybd_da.Value != null)
+            {
+                ngaybd = dt_ngaybd_da.Value;
+                // Sử dụng giá trị selectedValue trong các xử lý dữ liệu khác
+            }
+
+            string phong = tb_phong_da.Text;
         }
     }
 }

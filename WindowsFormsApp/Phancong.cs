@@ -18,6 +18,11 @@ namespace WindowsFormsApp
         public Phancong()
         {
             InitializeComponent();
+
+            dt_thoigian_pc.CustomFormat = " "; // Đặt format thành một khoảng trắng để hiển thị giá trị null
+            dt_thoigian_pc.Format = DateTimePickerFormat.Custom;
+
+            dt_thoigian_pc.ValueChanged += dt_thoigian_pc_ValueChanged;
         }
 
         private void Phancong_Load(object sender, EventArgs e)
@@ -48,6 +53,31 @@ namespace WindowsFormsApp
             General home = new General();
             home.Show();
             this.Hide();
+        }
+
+        private void dt_thoigian_pc_ValueChanged(object sender, EventArgs e)
+        {
+            if (dt_thoigian_pc.Value == dt_thoigian_pc.MinDate)
+            {
+                dt_thoigian_pc.CustomFormat = " "; // Hiển thị giá trị null nếu giá trị DateTimePicker bằng giá trị MinDate
+            }
+            else
+            {
+                dt_thoigian_pc.CustomFormat = "dd/MM/yyyy"; // Đặt format ngày tháng mong muốn
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string manv = tb_manv_pc.Text;
+            string mada = tb_mada_pc.Text;
+            DateTime thoigian;
+
+            if (dt_thoigian_pc.Value != null)
+            {
+                thoigian = dt_thoigian_pc.Value;
+                // Sử dụng giá trị selectedValue trong các xử lý dữ liệu khác
+            }
         }
     }
 }

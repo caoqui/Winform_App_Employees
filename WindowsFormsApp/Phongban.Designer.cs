@@ -57,6 +57,7 @@
             this.btn_update_pb.TabIndex = 2;
             this.btn_update_pb.Text = "Cập nhật";
             this.btn_update_pb.UseVisualStyleBackColor = true;
+            this.btn_update_pb.Click += new System.EventHandler(this.btn_update_pb_Click);
             // 
             // button2
             // 

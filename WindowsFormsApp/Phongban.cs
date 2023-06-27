@@ -55,5 +55,12 @@ namespace WindowsFormsApp
         {
 
         }
+
+        private void btn_update_pb_Click(object sender, EventArgs e)
+        {
+            string mapb = tb_mapb_pb.Text;
+            string tenpb = tb_tenpb_pb.Text;
+            string trphg = tb_trphg_pb.Text;
+        }
     }
 }
