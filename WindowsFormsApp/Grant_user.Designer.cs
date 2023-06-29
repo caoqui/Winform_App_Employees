@@ -34,7 +34,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox_bang_grant = new System.Windows.Forms.TextBox();
             this.checkBox_grant = new System.Windows.Forms.CheckBox();
             this.button1 = new System.Windows.Forms.Button();
             this.btn_home_grant_user = new System.Windows.Forms.Button();
@@ -42,6 +41,7 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.btn_revoke_grant = new System.Windows.Forms.Button();
+            this.cbb_bang_grant_user = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label1
@@ -96,14 +96,6 @@
             this.label5.Size = new System.Drawing.Size(125, 16);
             this.label5.TabIndex = 5;
             this.label5.Text = "Cho phép ủy quyền:";
-            // 
-            // textBox_bang_grant
-            // 
-            this.textBox_bang_grant.Location = new System.Drawing.Point(136, 145);
-            this.textBox_bang_grant.Name = "textBox_bang_grant";
-            this.textBox_bang_grant.Size = new System.Drawing.Size(179, 22);
-            this.textBox_bang_grant.TabIndex = 7;
-            this.textBox_bang_grant.Text = "TAIKHOAN";
             // 
             // checkBox_grant
             // 
@@ -162,19 +154,28 @@
             this.btn_revoke_grant.UseVisualStyleBackColor = true;
             this.btn_revoke_grant.Click += new System.EventHandler(this.btn_revoke_grant_Click);
             // 
+            // cbb_bang_grant_user
+            // 
+            this.cbb_bang_grant_user.FormattingEnabled = true;
+            this.cbb_bang_grant_user.Location = new System.Drawing.Point(133, 143);
+            this.cbb_bang_grant_user.Name = "cbb_bang_grant_user";
+            this.cbb_bang_grant_user.Size = new System.Drawing.Size(181, 24);
+            this.cbb_bang_grant_user.TabIndex = 15;
+            this.cbb_bang_grant_user.SelectedIndexChanged += new System.EventHandler(this.cbb_bang_grant_user_SelectedIndexChanged);
+            // 
             // Grant_user
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(807, 450);
+            this.Controls.Add(this.cbb_bang_grant_user);
             this.Controls.Add(this.btn_revoke_grant);
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.btn_home_grant_user);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.checkBox_grant);
-            this.Controls.Add(this.textBox_bang_grant);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -197,7 +198,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox_bang_grant;
         private System.Windows.Forms.CheckBox checkBox_grant;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btn_home_grant_user;
@@ -205,5 +205,6 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Button btn_revoke_grant;
+        private System.Windows.Forms.ComboBox cbb_bang_grant_user;
     }
 }

@@ -137,22 +137,24 @@ namespace MyApp
 
                     if (p_action.ToUpper() == "INSERT" || p_action.ToUpper() == "DELETE")
                     {
-                        queryString = "GRANT " + p_action + " ON " + p_table + " TO " + p_user_role_name + " " + p_allowgrant;
+                        queryString = "GRANT " + p_action + " ON ATBM." + p_table + " TO " + p_user_role_name + " " + p_allowgrant;
                     }
 
                     else if (p_action.ToUpper() == "SELECT" || p_action.ToUpper() == "UPDATE")
                     {
-                        queryString = "GRANT " + p_action + "( " + p_row + " ) ON " + p_table + " TO " + p_user_role_name + " " + p_allowgrant;
+                        queryString = "GRANT " + p_action + " ON ATBM." + p_table + " TO " + p_user_role_name + " " + p_allowgrant;
                     }
                     else
                     {
                         return;
                     }
 
+
                     OracleCommand command = new OracleCommand(queryString, connection);
 
                     OracleDataAdapter adapter = new OracleDataAdapter(command);
                     adapter.Fill(dataTable);
+                    MessageBox.Show("Cấp quyền thành công!");
                 }
                 catch (Exception ex)
                 {
@@ -211,16 +213,19 @@ namespace MyApp
                     connection.Open();
 
                     //string queryString = "BEGIN GET_OBJECT_PRIVILEGES('" + p_table + "'); END;";
-                    string queryString = "SELECT GRANTEE, TABLE_NAME, PRIVILEGE, GRANTABLE   FROM DBA_TAB_PRIVS WHERE owner = 'SYS' AND table_name = 'TAIKHOAN'";
+                    /*string queryString = string.Format("SELECT GRANTEE, TABLE_NAME, PRIVILEGE, GRANTABLE   FROM DBA_TAB_PRIVS WHERE owner = 'SYS' AND table_name = {0};", p_table);*/
+                    string queryString = string.Format("SELECT GRANTEE, TABLE_NAME, PRIVILEGE, GRANTABLE FROM DBA_TAB_PRIVS WHERE owner = 'ATBM' AND table_name = '{0}'", p_table);
+
 
                     OracleCommand command = new OracleCommand(queryString, connection);
 
                     OracleParameter parameter = new OracleParameter();
-                    parameter.OracleDbType = OracleDbType.Varchar2;
+/*                    parameter.OracleDbType = OracleDbType.Varchar2;
                     parameter.Direction = ParameterDirection.Input;
                     parameter.ParameterName = "p_obj_name";
                     parameter.Value = p_table;
-                    command.Parameters.Add(parameter);
+                    command.Parameters.Add(parameter);*/
+
 
                     OracleDataAdapter adapter = new OracleDataAdapter(command);
                     adapter.Fill(dataTable);

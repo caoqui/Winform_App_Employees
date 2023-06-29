@@ -27,25 +27,131 @@ namespace WindowsFormsApp
 
         private void Phancong_Load(object sender, EventArgs e)
         {
-            // Kiểm tra kết nối
+
             if (DatabaseManager.Connection != null)
             {
-                // Tạo câu truy vấn
+                try
+                {
+                    // Tạo câu truy vấn SQL
+                    string query = "SELECT ATBM.get_vaitro FROM dual";
 
-                string query = "SELECT * FROM ATBM.NV_NV_VIEW";
+                    // Khởi tạo OracleCommand để thực thi câu truy vấn
+                    OracleCommand command = new OracleCommand(query, DatabaseManager.Connection);
+
+                    // Khởi tạo OracleDataAdapter để lấy dữ liệu từ câu truy vấn
+                    OracleDataAdapter dataAdapter = new OracleDataAdapter(command);
+
+                    // Khởi tạo DataTable để lưu trữ kết quả truy vấn
+                    DataTable dataTable = new DataTable();
+
+                    // Đổ dữ liệu từ DataAdapter vào DataTable
+                    dataAdapter.Fill(dataTable);
+
+                    // Kiểm tra và hiển thị kết quả
+                    string result;
+                    string query_all;
+                    if (dataTable.Rows.Count > 0)
+                    {
+                        result = dataTable.Rows[0][0].ToString();
+                        MessageBox.Show(result);
+                        if (result == "Nhân viên" || result == "Trưởng đề án")
+                        {
+                            query_all = "SELECT * FROM ATBM.NV_NV_VIEW";
+
+                            if (DatabaseManager.Connection != null)
+                            {
+                                // Tạo câu truy vấn
 
 
-                // Khởi tạo DataAdapter và DataTable
-                dataAdapter = new OracleDataAdapter(query, DatabaseManager.Connection);
-                dataTable = new DataTable();
+                                // Khởi tạo DataAdapter và DataTable
+                                dataAdapter = new OracleDataAdapter(query_all, DatabaseManager.Connection);
+                                dataTable = new DataTable();
 
-                // Đổ dữ liệu từ Oracle vào DataTable
-                dataAdapter.Fill(dataTable);
+                                // Đổ dữ liệu từ Oracle vào DataTable
+                                dataAdapter.Fill(dataTable);
 
-                // Đặt DataTable là nguồn dữ liệu cho DataGridView
-                data_phancong.DataSource = dataTable;
+                                // Đặt DataTable là nguồn dữ liệu cho DataGridView
+                                data_phancong.DataSource = dataTable;
 
+                            }
+                        }
+                        else if (result == "Trưởng phòng")
+                        {
+                            query_all = "SELECT * FROM ATBM.TP_NV_VIEW";
+                            if (DatabaseManager.Connection != null)
+                            {
+                                // Tạo câu truy vấn
+
+
+                                // Khởi tạo DataAdapter và DataTable
+                                dataAdapter = new OracleDataAdapter(query_all, DatabaseManager.Connection);
+                                dataTable = new DataTable();
+
+                                // Đổ dữ liệu từ Oracle vào DataTable
+                                dataAdapter.Fill(dataTable);
+
+                                // Đặt DataTable là nguồn dữ liệu cho DataGridView
+                                data_phancong.DataSource = dataTable;
+
+                            }
+                        }
+                        else if (result == "Nhân sự" || result == "Tài chính")
+                        {
+                            query_all = "SELECT * FROM ATBM.NHANVIEN";
+                            if (DatabaseManager.Connection != null)
+                            {
+                                // Tạo câu truy vấn
+
+
+                                // Khởi tạo DataAdapter và DataTable
+                                dataAdapter = new OracleDataAdapter(query_all, DatabaseManager.Connection);
+                                dataTable = new DataTable();
+
+                                // Đổ dữ liệu từ Oracle vào DataTable
+                                dataAdapter.Fill(dataTable);
+
+                                // Đặt DataTable là nguồn dữ liệu cho DataGridView
+                                data_phancong.DataSource = dataTable;
+
+                            }
+                        }
+                        else if (result == "QL Trực tiếp")
+                        {
+                            query_all = "SELECT * FROM ATBM.QL_NV_VIEW";
+                            if (DatabaseManager.Connection != null)
+                            {
+                                // Tạo câu truy vấn
+
+
+                                // Khởi tạo DataAdapter và DataTable
+                                dataAdapter = new OracleDataAdapter(query_all, DatabaseManager.Connection);
+                                dataTable = new DataTable();
+
+                                // Đổ dữ liệu từ Oracle vào DataTable
+                                dataAdapter.Fill(dataTable);
+
+                                // Đặt DataTable là nguồn dữ liệu cho DataGridView
+                                data_phancong.DataSource = dataTable;
+
+                            }
+                        }
+
+                        // Kiểm tra kết nối
+
+
+                    }
+                    
+
+
+                }
+                catch (OracleException ex)
+                {
+                    // Xử lý lỗi khi thực thi truy vấn
+                    MessageBox.Show("Lỗi truy vấn SQL: " + ex.Message);
+                }
             }
+
+            
         }
 
         private void button4_Click(object sender, EventArgs e)

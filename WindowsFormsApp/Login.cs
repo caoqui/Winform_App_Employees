@@ -16,6 +16,9 @@ namespace WindowsFormsApp
         public Login()
         {
             InitializeComponent();
+            DN_password.PasswordChar = '*';
+            DN_password.UseSystemPasswordChar = true;
+
         }
 
         private void button_dangnhap_Click(object sender, EventArgs e)
@@ -27,7 +30,7 @@ namespace WindowsFormsApp
             {
                 // Đăng nhập thành công
                 Username = username; // Lưu thông tin đăng nhập vào biến
-                if(Username == "sys" || Username == "ATBM")
+                if( Username == "ATBM")
                 {
                     Users admin = new Users();
                     admin.Show();

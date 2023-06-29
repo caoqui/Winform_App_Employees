@@ -30,6 +30,7 @@
         {
             this.privileges_data = new System.Windows.Forms.DataGridView();
             this.btn_home_privileges_tk = new System.Windows.Forms.Button();
+            this.cbb_bang_pri = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.privileges_data)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,11 +55,21 @@
             this.btn_home_privileges_tk.UseVisualStyleBackColor = true;
             this.btn_home_privileges_tk.Click += new System.EventHandler(this.btn_home_privileges_tk_Click);
             // 
+            // cbb_bang_pri
+            // 
+            this.cbb_bang_pri.FormattingEnabled = true;
+            this.cbb_bang_pri.Location = new System.Drawing.Point(13, 145);
+            this.cbb_bang_pri.Name = "cbb_bang_pri";
+            this.cbb_bang_pri.Size = new System.Drawing.Size(177, 24);
+            this.cbb_bang_pri.TabIndex = 2;
+            this.cbb_bang_pri.SelectedIndexChanged += new System.EventHandler(this.cbb_bang_pri_SelectedIndexChanged);
+            // 
             // PrivilegesTK
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.cbb_bang_pri);
             this.Controls.Add(this.btn_home_privileges_tk);
             this.Controls.Add(this.privileges_data);
             this.Name = "PrivilegesTK";
@@ -72,5 +83,6 @@
 
         private System.Windows.Forms.DataGridView privileges_data;
         private System.Windows.Forms.Button btn_home_privileges_tk;
+        private System.Windows.Forms.ComboBox cbb_bang_pri;
     }
 }
