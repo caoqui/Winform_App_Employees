@@ -9,6 +9,8 @@ using System;
 namespace MyApp
 {
     using Oracle.ManagedDataAccess.Client;
+    using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+
     public static class OracleHelper
     {
         public static OracleConnection GetOracleConnection()
@@ -135,6 +137,18 @@ namespace MyApp
 
                     string queryString;
 
+                    /*if (p_action.ToUpper() == "INSERT" || p_action.ToUpper() == "DELETE")
+                    {
+                        queryString = string.Format(@"GRANT {0} ON ATBM.{1} TO {2} {3};", p_action, p_table, p_user_role_name, p_allowgrant);
+                    }
+
+                    else if (p_action.ToUpper() == "SELECT" || p_action.ToUpper() == "UPDATE")
+                    {
+
+                        queryString = string.Format(@"GRANT {0} ON ATBM.{1} TO {2} {3};", p_action, p_table, p_user_role_name, p_allowgrant);
+
+*//*                        queryString = "GRANT " + p_action + " ON ATBM." + p_table + " TO " + p_user_role_name + " " + p_allowgrant + ";GRANT "+ p_action + "ON TO "+ p_user_role_name + ";GRANT EXECUTE ON ATBM.GET_VAITRO TO "+ p_user_role_name;
+*//*                    }*/
                     if (p_action.ToUpper() == "INSERT" || p_action.ToUpper() == "DELETE")
                     {
                         queryString = "GRANT " + p_action + " ON ATBM." + p_table + " TO " + p_user_role_name + " " + p_allowgrant;
@@ -148,6 +162,7 @@ namespace MyApp
                     {
                         return;
                     }
+
 
 
                     OracleCommand command = new OracleCommand(queryString, connection);
@@ -177,12 +192,12 @@ namespace MyApp
 
                     if (p_action.ToUpper() == "INSERT" || p_action.ToUpper() == "DELETE")
                     {
-                        queryString = "REVOKE " + p_action + " ON " + p_table + " FROM " + p_user_role_name;
+                        queryString = "REVOKE " + p_action + " ON ATBM." + p_table + " FROM " + p_user_role_name;
                     }
 
                     else if (p_action.ToUpper() == "SELECT" || p_action.ToUpper() == "UPDATE")
                     {
-                        queryString = "REVOKE " + p_action + " (" + p_row + " ) ON " + p_table + " FROM " + p_user_role_name;
+                        queryString = "REVOKE " + p_action + " ON ATBM." + p_table + " FROM " + p_user_role_name;
                     }
                     else
                     {
@@ -193,6 +208,7 @@ namespace MyApp
 
                     OracleDataAdapter adapter = new OracleDataAdapter(command);
                     adapter.Fill(dataTable);
+                    MessageBox.Show("Đã thu hồi quyền thành công!");
                 }
                 catch (Exception ex)
                 {
