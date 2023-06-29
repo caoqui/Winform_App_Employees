@@ -41,6 +41,8 @@
             this.tb_tenda_da = new System.Windows.Forms.TextBox();
             this.tb_phong_da = new System.Windows.Forms.TextBox();
             this.dt_ngaybd_da = new System.Windows.Forms.DateTimePicker();
+            this.tb_truongda_da = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.data_dean)).BeginInit();
             this.SuspendLayout();
             // 
@@ -71,6 +73,7 @@
             this.button2.TabIndex = 2;
             this.button2.Text = "Xóa";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
@@ -80,6 +83,7 @@
             this.button3.TabIndex = 3;
             this.button3.Text = "Cập nhật";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button4
             // 
@@ -156,11 +160,29 @@
             this.dt_ngaybd_da.TabIndex = 13;
             this.dt_ngaybd_da.ValueChanged += new System.EventHandler(this.dt_ngaybd_da_ValueChanged);
             // 
+            // tb_truongda_da
+            // 
+            this.tb_truongda_da.Location = new System.Drawing.Point(733, 282);
+            this.tb_truongda_da.Name = "tb_truongda_da";
+            this.tb_truongda_da.Size = new System.Drawing.Size(263, 22);
+            this.tb_truongda_da.TabIndex = 14;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(604, 289);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(87, 16);
+            this.label5.TabIndex = 15;
+            this.label5.Text = "Trưởng đề án";
+            // 
             // Dean
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1144, 450);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.tb_truongda_da);
             this.Controls.Add(this.dt_ngaybd_da);
             this.Controls.Add(this.tb_phong_da);
             this.Controls.Add(this.tb_tenda_da);
@@ -198,5 +220,7 @@
         private System.Windows.Forms.TextBox tb_tenda_da;
         private System.Windows.Forms.TextBox tb_phong_da;
         private System.Windows.Forms.DateTimePicker dt_ngaybd_da;
+        private System.Windows.Forms.TextBox tb_truongda_da;
+        private System.Windows.Forms.Label label5;
     }
 }

@@ -37,6 +37,8 @@
             this.tb_mapb_pb = new System.Windows.Forms.TextBox();
             this.tb_tenpb_pb = new System.Windows.Forms.TextBox();
             this.tb_trphg_pb = new System.Windows.Forms.TextBox();
+            this.bt_them_phongban = new System.Windows.Forms.Button();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.data_phongban)).BeginInit();
             this.SuspendLayout();
             // 
@@ -51,7 +53,7 @@
             // 
             // btn_update_pb
             // 
-            this.btn_update_pb.Location = new System.Drawing.Point(825, 328);
+            this.btn_update_pb.Location = new System.Drawing.Point(886, 328);
             this.btn_update_pb.Name = "btn_update_pb";
             this.btn_update_pb.Size = new System.Drawing.Size(142, 52);
             this.btn_update_pb.TabIndex = 2;
@@ -118,11 +120,22 @@
             this.tb_trphg_pb.Size = new System.Drawing.Size(240, 22);
             this.tb_trphg_pb.TabIndex = 9;
             // 
+            // bt_them_phongban
+            // 
+            this.bt_them_phongban.Location = new System.Drawing.Point(703, 330);
+            this.bt_them_phongban.Name = "bt_them_phongban";
+            this.bt_them_phongban.Size = new System.Drawing.Size(127, 50);
+            this.bt_them_phongban.TabIndex = 10;
+            this.bt_them_phongban.Text = "Thêm";
+            this.bt_them_phongban.UseVisualStyleBackColor = true;
+            this.bt_them_phongban.Click += new System.EventHandler(this.bt_them_phongban_Click);
+            // 
             // Phongban
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1212, 450);
+            this.Controls.Add(this.bt_them_phongban);
             this.Controls.Add(this.tb_trphg_pb);
             this.Controls.Add(this.tb_tenpb_pb);
             this.Controls.Add(this.tb_mapb_pb);
@@ -152,5 +165,7 @@
         private System.Windows.Forms.TextBox tb_mapb_pb;
         private System.Windows.Forms.TextBox tb_tenpb_pb;
         private System.Windows.Forms.TextBox tb_trphg_pb;
+        private System.Windows.Forms.Button bt_them_phongban;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }

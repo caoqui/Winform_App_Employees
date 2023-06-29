@@ -132,9 +132,29 @@ namespace WindowsFormsApp
 
                             }
                         }
-                        else if (result == "Nhân sự" || result == "Tài chính")
+                        else if (result == "Tài chính")
                         {
                             query_all = "SELECT MANV, ATBM.DECRYPT_DATA(TENNV) TENNV, PHAI, NGAYSINH, ATBM.DECRYPT_DATA(DIACHI) DIACHI, ATBM.DECRYPT_DATA(SODT)SODT, LUONG, PHUCAP, VAITRO, MANQL, PHG FROM ATBM.NHANVIEN";
+                            if (DatabaseManager.Connection != null)
+                            {
+                                // Tạo câu truy vấn
+
+
+                                // Khởi tạo DataAdapter và DataTable
+                                dataAdapter = new OracleDataAdapter(query_all, DatabaseManager.Connection);
+                                dataTable = new DataTable();
+
+                                // Đổ dữ liệu từ Oracle vào DataTable
+                                dataAdapter.Fill(dataTable);
+
+                                // Đặt DataTable là nguồn dữ liệu cho DataGridView
+                                data_nhanvien.DataSource = dataTable;
+
+                            }
+                        }
+                        else if (result == "Nhân sự")
+                        {
+                            query_all = "SELECT * FROM ATBM.NS_NV_VIEW";
                             if (DatabaseManager.Connection != null)
                             {
                                 // Tạo câu truy vấn

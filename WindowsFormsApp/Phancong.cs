@@ -54,10 +54,9 @@ namespace WindowsFormsApp
                     {
                         result = dataTable.Rows[0][0].ToString();
                         MessageBox.Show(result);
-                        if (result == "Nhân viên" || result == "Trưởng đề án")
+                        if (result == "Trưởng phòng")
                         {
-                            query_all = "SELECT * FROM ATBM.NV_NV_VIEW";
-
+                            query_all = "SELECT * FROM ATBM.TP_PC_VIEW";
                             if (DatabaseManager.Connection != null)
                             {
                                 // Tạo câu truy vấn
@@ -75,29 +74,9 @@ namespace WindowsFormsApp
 
                             }
                         }
-                        else if (result == "Trưởng phòng")
+                        else if (result == "Tài chính")
                         {
-                            query_all = "SELECT * FROM ATBM.TP_NV_VIEW";
-                            if (DatabaseManager.Connection != null)
-                            {
-                                // Tạo câu truy vấn
-
-
-                                // Khởi tạo DataAdapter và DataTable
-                                dataAdapter = new OracleDataAdapter(query_all, DatabaseManager.Connection);
-                                dataTable = new DataTable();
-
-                                // Đổ dữ liệu từ Oracle vào DataTable
-                                dataAdapter.Fill(dataTable);
-
-                                // Đặt DataTable là nguồn dữ liệu cho DataGridView
-                                data_phancong.DataSource = dataTable;
-
-                            }
-                        }
-                        else if (result == "Nhân sự" || result == "Tài chính")
-                        {
-                            query_all = "SELECT * FROM ATBM.NHANVIEN";
+                            query_all = "SELECT * FROM ATBM.PHANCONG";
                             if (DatabaseManager.Connection != null)
                             {
                                 // Tạo câu truy vấn
@@ -117,7 +96,27 @@ namespace WindowsFormsApp
                         }
                         else if (result == "QL Trực tiếp")
                         {
-                            query_all = "SELECT * FROM ATBM.QL_NV_VIEW";
+                            query_all = "SELECT * FROM ATBM.QL_PC_VIEW";
+                            if (DatabaseManager.Connection != null)
+                            {
+                                // Tạo câu truy vấn
+
+
+                                // Khởi tạo DataAdapter và DataTable
+                                dataAdapter = new OracleDataAdapter(query_all, DatabaseManager.Connection);
+                                dataTable = new DataTable();
+
+                                // Đổ dữ liệu từ Oracle vào DataTable
+                                dataAdapter.Fill(dataTable);
+
+                                // Đặt DataTable là nguồn dữ liệu cho DataGridView
+                                data_phancong.DataSource = dataTable;
+
+                            }
+                        } else
+                        {
+                            query_all = "SELECT * FROM ATBM.NV_PC_VIEW";
+
                             if (DatabaseManager.Connection != null)
                             {
                                 // Tạo câu truy vấn
@@ -135,6 +134,7 @@ namespace WindowsFormsApp
 
                             }
                         }
+                        
 
                         // Kiểm tra kết nối
 
@@ -175,15 +175,69 @@ namespace WindowsFormsApp
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string manv = tb_manv_pc.Text;
-            string mada = tb_mada_pc.Text;
-            DateTime thoigian;
 
-            if (dt_thoigian_pc.Value != null)
+
+
+            if (DatabaseManager.Connection != null)
             {
-                thoigian = dt_thoigian_pc.Value;
-                // Sử dụng giá trị selectedValue trong các xử lý dữ liệu khác
+
+                try
+                {
+                    // Tạo câu truy vấn
+                    int manv = Int32.Parse(tb_manv_pc.Text);
+                    string mada = tb_mada_pc.Text;
+
+                    string thoigian = dt_thoigian_pc.Value.ToString("yyyy-MM-dd").Substring(0, 10);
+
+                    string query = string.Format(@"INSERT INTO ATBM.PHANCONG(MANV, MADA, THOIGIAN) VALUES ({0},'{1}',TO_DATE('{2}','yyyy-MM-dd'))", manv, mada, thoigian);
+
+
+                    // Khởi tạo DataAdapter và DataTable
+                    dataAdapter = new OracleDataAdapter(query, DatabaseManager.Connection);
+                    dataTable = new DataTable();
+
+                    MessageBox.Show(query);
+                    MessageBox.Show("Thêm phân công thành công!");
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("ERR: " + ex.Message);
+                }
+
             }
         }
-    }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+            // Kiểm tra kết nối
+            if (DatabaseManager.Connection != null)
+            {
+
+                try
+                {
+                    // Tạo câu truy vấn
+                    string mada = tb_mada_pc.Text;
+                    int manv = Int32.Parse(tb_manv_pc.Text);
+
+                    string query = @"DELETE FROM ATBM.PHANCONG WHERE MADA=:mada AND MANV=:MANV";
+                    OracleCommand command = new OracleCommand(query, DatabaseManager.Connection);
+                    command.Parameters.Add(":mada", OracleDbType.Varchar2).Value = mada;
+                    command.Parameters.Add(":manv", OracleDbType.Int32).Value = manv;
+
+                    int rowsAffected = command.ExecuteNonQuery();
+
+
+                    MessageBox.Show("Xóa phân công thành công!");
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("ERR: " + ex.Message);
+                }
+
+            }
+            }
+        }
 }
