@@ -30,7 +30,6 @@
         {
             this.data_nhanvien = new System.Windows.Forms.DataGridView();
             this.btn_them_nv = new System.Windows.Forms.Button();
-            this.btn_xoa_nv = new System.Windows.Forms.Button();
             this.btn_capnhat_nv = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.tb_manv_nv = new System.Windows.Forms.TextBox();
@@ -72,7 +71,7 @@
             // 
             // btn_them_nv
             // 
-            this.btn_them_nv.Location = new System.Drawing.Point(511, 443);
+            this.btn_them_nv.Location = new System.Drawing.Point(633, 443);
             this.btn_them_nv.Name = "btn_them_nv";
             this.btn_them_nv.Size = new System.Drawing.Size(155, 44);
             this.btn_them_nv.TabIndex = 1;
@@ -80,23 +79,15 @@
             this.btn_them_nv.UseVisualStyleBackColor = true;
             this.btn_them_nv.Click += new System.EventHandler(this.button1_Click);
             // 
-            // btn_xoa_nv
-            // 
-            this.btn_xoa_nv.Location = new System.Drawing.Point(710, 443);
-            this.btn_xoa_nv.Name = "btn_xoa_nv";
-            this.btn_xoa_nv.Size = new System.Drawing.Size(157, 44);
-            this.btn_xoa_nv.TabIndex = 2;
-            this.btn_xoa_nv.Text = "Xóa";
-            this.btn_xoa_nv.UseVisualStyleBackColor = true;
-            // 
             // btn_capnhat_nv
             // 
-            this.btn_capnhat_nv.Location = new System.Drawing.Point(921, 443);
+            this.btn_capnhat_nv.Location = new System.Drawing.Point(861, 443);
             this.btn_capnhat_nv.Name = "btn_capnhat_nv";
             this.btn_capnhat_nv.Size = new System.Drawing.Size(155, 44);
             this.btn_capnhat_nv.TabIndex = 4;
             this.btn_capnhat_nv.Text = "Cập nhật";
             this.btn_capnhat_nv.UseVisualStyleBackColor = true;
+            this.btn_capnhat_nv.Click += new System.EventHandler(this.btn_capnhat_nv_Click);
             // 
             // button5
             // 
@@ -265,6 +256,7 @@
             // 
             // dt_ngaysinh_nv
             // 
+            this.dt_ngaysinh_nv.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dt_ngaysinh_nv.Location = new System.Drawing.Point(596, 184);
             this.dt_ngaysinh_nv.Name = "dt_ngaysinh_nv";
             this.dt_ngaysinh_nv.Size = new System.Drawing.Size(236, 22);
@@ -316,7 +308,6 @@
             this.Controls.Add(this.tb_manv_nv);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.btn_capnhat_nv);
-            this.Controls.Add(this.btn_xoa_nv);
             this.Controls.Add(this.btn_them_nv);
             this.Controls.Add(this.data_nhanvien);
             this.Name = "Nhanvien";
@@ -332,7 +323,6 @@
 
         private System.Windows.Forms.DataGridView data_nhanvien;
         private System.Windows.Forms.Button btn_them_nv;
-        private System.Windows.Forms.Button btn_xoa_nv;
         private System.Windows.Forms.Button btn_capnhat_nv;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.TextBox tb_manv_nv;
